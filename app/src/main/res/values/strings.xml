@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">NewsViews</string>
+
+    <string name="close">Close</string>
+    <string name="open">Open</string>
+
+    <string name="header_text">Welcome</string>
+    <string name="sample">Sample</string>
+    <string name="newsviews">NewsViews</string>
+    <string name="text_third_page">This app provide you various news</string>
+    <string name="welcome">Welcome</string>
+    <string name="about">About</string>
+</resources>
