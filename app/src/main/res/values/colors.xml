@@ -5,11 +5,11 @@
     <color name="colorAccent">#D81B60</color>
 
     <!-- My Custom Color -->
-    <color name="drawer_background">#40C4FF</color>
-    <color name="drawer_icon_color">#ff00</color>
+    <color name="drawer_background">#ffffff</color>
+    <color name="drawer_icon_color">#40C4FF</color>
     <color name="drawer_text_color">#000000</color>
     <color name="background_color">#E1F5FE</color>
-    <color name="header_background">#d2d283</color>
+    <color name="header_background">#40C4FF</color>
     <color name="text_color_next">#a72005</color>
     <color name="text_number">#f00</color>
 </resources>

@@ -2,7 +2,7 @@ package com.example.firoz.newsviewsv2.api;
 
 
 public class ApiUtils {
-    private static final String BASE_URL = "http://numbersapi.com/";
+    private static final String BASE_URL = "";
 
     private ApiUtils() {
     }

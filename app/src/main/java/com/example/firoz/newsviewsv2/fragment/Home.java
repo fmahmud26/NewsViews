@@ -23,17 +23,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 
 public class Home extends Fragment {
 
-    @BindView(R.id.numberInfoTextView)
-    TextView numberInfoTextView;
+
     Unbinder unbinder;
     private String strUrl = "http://numbersapi.com/10";
 
@@ -48,7 +44,7 @@ public class Home extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        new GetNumberInfo().execute();
+        // new GetNumberInfo().execute();
     }
 
     @Override
@@ -90,7 +86,7 @@ public class Home extends Fragment {
 
         @Override
         protected void onPostExecute(String s) {
-            numberInfoTextView.setText(result);
+            //  numberInfoTextView.setText(result);
         }
     }
 }

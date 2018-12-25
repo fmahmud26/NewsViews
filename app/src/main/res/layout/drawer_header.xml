@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/drawer_background"
+    android:background="@color/header_background"
     android:orientation="vertical"
     android:padding="20dp">
 
 
     <ImageView
-        android:layout_width="90dp"
+        android:layout_width="110dp"
         android:layout_height="90dp"
-        android:src="@drawable/_sample" />
+        android:scaleType="fitXY"
+        android:src="@drawable/newspaper" />
 
     <TextView
         android:layout_width="match_parent"

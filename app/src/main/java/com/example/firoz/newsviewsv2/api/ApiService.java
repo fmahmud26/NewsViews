@@ -5,7 +5,11 @@ import retrofit2.http.GET;
 import retrofit2.http.Url;
 
 public interface ApiService {
-    // -- for get something
+    // -- For getting number info from Number Api
     @GET
     Call<String> getNumberInfo(@Url String url);
+
+    // --- For getting News from News Api
+    @GET
+    Call<String> getNewsDetails(@Url String url);
 }
