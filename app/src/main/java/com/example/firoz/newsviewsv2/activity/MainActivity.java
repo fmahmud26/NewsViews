@@ -25,7 +25,7 @@ import com.example.firoz.newsviewsv2.fragment.Home;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.fragment_place)
     FrameLayout fragmentPlace;
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
 
     private ActionBarDrawerToggle drawerToggle;
-    private long startTime, endTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,18 +120,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private void addFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_place, fragment).commit();
-    }
-
     @Override
     public void onBackPressed() {
-        endTime = startTime;
-        startTime = System.currentTimeMillis();
-        if (startTime - endTime < 500) {
-            finish();
-        } else {
-            Toast.makeText(this, "Press back again to exit.", Toast.LENGTH_SHORT).show();
-        }
+        exitWhenDoubleClick();
     }
 }

@@ -5,11 +5,11 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.firoz.newsviewsv2.R;
+import com.example.firoz.newsviewsv2.activity.BaseActivity;
 import com.example.firoz.newsviewsv2.activity.MainActivity;
 
 import butterknife.BindView;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
  */
 
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends BaseActivity {
 
     private static final String IS_FIRST_TIME = "pref_key";
     private static final String PREF_KEY = "news_views";
@@ -43,7 +43,8 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (isFirstTime()) {
-            goNextActivity();
+            goHomePage();
+            finish();
         } else {
             initViews();
         }
@@ -52,7 +53,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void initViews() {
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
-        addScreen(new FirstPage());
+        addWelcomeScreen(new FirstPage());
     }
 
     @OnClick(R.id.nextTextView)
@@ -60,35 +61,21 @@ public class WelcomeActivity extends AppCompatActivity {
         pageCounter++;
         if (pageCounter == 2) {
             page2.setImageResource(R.drawable.circle2);
-            addScreen(new SecondPage());
+            addWelcomeScreen(new SecondPage());
         } else if (pageCounter == 3) {
             page3.setImageResource(R.drawable.circle2);
-            addScreen(new ThirdPage());
+            addWelcomeScreen(new ThirdPage());
             nextTextView.setText("Done");
             nextTextView.setTextColor(Color.GREEN);
         } else if (pageCounter == 4) {
-            SharedPreferences preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean(IS_FIRST_TIME, true).commit();
-            goNextActivity();
+            saveBoolean(true);
+            goHomePage();
+            finish();
         }
     }
 
-
-    private void addScreen(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.welcome_screen_place, fragment).commit();
-    }
-
-    private void goNextActivity() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
-    }
 
     private boolean isFirstTime() {
-        SharedPreferences preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
-        if (preferences.contains(IS_FIRST_TIME)) {
-            return preferences.getBoolean(IS_FIRST_TIME, false);
-        }
-        return false;
+        return getBoolean();
     }
 }
