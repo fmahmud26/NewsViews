@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00B0FF</color>
-    <color name="colorPrimaryDark">#0091EA</color>
+    <color name="colorPrimary">#6A1B9A</color>
+    <color name="colorPrimaryDark">#4A148C</color>
     <color name="colorAccent">#D81B60</color>
 
     <!-- My Custom Color -->
     <color name="drawer_background">#ffffff</color>
-    <color name="drawer_icon_color">#40C4FF</color>
+    <color name="drawer_icon_color">#1B5E20</color>
     <color name="drawer_text_color">#000000</color>
     <color name="background_color">#E1F5FE</color>
-    <color name="header_background">#40C4FF</color>
+    <color name="header_background">#4A148C</color>
     <color name="text_color_next">#a72005</color>
     <color name="text_number">#f00</color>
     <color name="black_color">#000000</color>
+    <color name="date_time_text_color">#000000</color>
+    <color name="header_text_color">#ffffff</color>
 </resources>

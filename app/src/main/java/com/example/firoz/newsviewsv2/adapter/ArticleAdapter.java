@@ -1,7 +1,6 @@
 package com.example.firoz.newsviewsv2.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.firoz.newsviewsv2.R;
 import com.example.firoz.newsviewsv2.model.Article;
@@ -31,7 +29,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArtitleV
     @NonNull
     @Override
     public ArtitleViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.newslayout_1, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.newslayout, null);
         return new ArtitleViewHolder(view);
     }
 

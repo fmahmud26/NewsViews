@@ -24,6 +24,7 @@ public class BaseActivity extends AppCompatActivity {
     private long startTime, endTime;
     private static final String KEY_BOOLEAN = "boolean_value";
     private static final String PREF_KEY = "news_views";
+    public static String number = "";
 
     // --- Code for show a snackbar
     public void showSnackBar(String message) {

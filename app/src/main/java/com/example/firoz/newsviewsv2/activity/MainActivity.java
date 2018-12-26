@@ -1,5 +1,6 @@
 package com.example.firoz.newsviewsv2.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.example.firoz.newsviewsv2.R;
 import com.example.firoz.newsviewsv2.fragment.About;
 import com.example.firoz.newsviewsv2.fragment.Home;
+import com.example.firoz.newsviewsv2.fragment.NumberInfo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,7 +82,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, "Submited", Toast.LENGTH_SHORT).show();
+                // Go number info page
+                number = query;
+                addFragment(new NumberInfo());
                 return false;
             }
 
