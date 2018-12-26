@@ -90,6 +90,7 @@ public class Home extends Fragment {
         // --- At first check , is internet connected or not
         if (!((MainActivity) getActivity()).isInternetConnected()) {
             ((MainActivity) getActivity()).showSnackBar("No internet connection");
+            refreshLayout.setRefreshing(false);
             return;
         }
 
