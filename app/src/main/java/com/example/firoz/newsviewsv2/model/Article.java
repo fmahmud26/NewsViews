@@ -4,10 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Article {
-
-    @SerializedName("source")
-    @Expose
-    private Source source;
     @SerializedName("author")
     @Expose
     private Object author;
@@ -29,14 +25,6 @@ public class Article {
     @SerializedName("content")
     @Expose
     private String content;
-
-    public Source getSource() {
-        return source;
-    }
-
-    public void setSource(Source source) {
-        this.source = source;
-    }
 
     public Object getAuthor() {
         return author;

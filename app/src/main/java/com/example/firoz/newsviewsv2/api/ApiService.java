@@ -1,5 +1,7 @@
 package com.example.firoz.newsviewsv2.api;
 
+import com.example.firoz.newsviewsv2.model.GetNewsViews;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
@@ -11,5 +13,5 @@ public interface ApiService {
 
     // --- For getting News from News Api
     @GET
-    Call<String> getNewsDetails(@Url String url);
+    Call<GetNewsViews> getNewsDetails(@Url String url);
 }

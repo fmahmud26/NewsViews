@@ -6,8 +6,22 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <!-- For implementing Pull to Refresh -->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--  This recyclerview layout contain news -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
 
 
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

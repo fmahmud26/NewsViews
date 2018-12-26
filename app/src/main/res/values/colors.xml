@@ -12,4 +12,5 @@
     <color name="header_background">#40C4FF</color>
     <color name="text_color_next">#a72005</color>
     <color name="text_number">#f00</color>
+    <color name="black_color">#000000</color>
 </resources>

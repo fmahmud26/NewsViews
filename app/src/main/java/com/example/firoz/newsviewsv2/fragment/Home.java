@@ -1,37 +1,49 @@
 package com.example.firoz.newsviewsv2.fragment;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firoz.newsviewsv2.R;
+import com.example.firoz.newsviewsv2.adapter.ArticleAdapter;
 import com.example.firoz.newsviewsv2.api.ApiService;
 import com.example.firoz.newsviewsv2.api.ApiUtils;
+import com.example.firoz.newsviewsv2.model.Article;
+import com.example.firoz.newsviewsv2.model.GetNewsViews;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Home extends Fragment {
 
 
     Unbinder unbinder;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.refreshLayout)
+    SwipeRefreshLayout refreshLayout;
     private String strUrl = "http://numbersapi.com/10";
+    private String NEWS_API = "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=";
+    private String API_KEY = "77f25792a70749929ba013c7f297261c";
+
+    private List<Article> articleList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -44,7 +56,13 @@ public class Home extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // new GetNumberInfo().execute();
+
+        initViews();
+        loadNews();
+    }
+
+    private void initViews() {
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
     }
 
     @Override
@@ -53,40 +71,35 @@ public class Home extends Fragment {
         unbinder.unbind();
     }
 
-    // --- Use AsyncTask for getting number information from server
-    public class GetNumberInfo extends AsyncTask<String, String, String> {
 
-        private String result = "";
+    // --- Method for loading the news from news api
+    private void loadNews() {
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+        ApiService apiService = ApiUtils.getService();
+        Call<GetNewsViews> newsViews = apiService.getNewsDetails(NEWS_API + API_KEY);
 
-        @Override
-        protected String doInBackground(String... strings) {
+        newsViews.enqueue(new Callback<GetNewsViews>() {
+            @Override
+            public void onResponse(Call<GetNewsViews> call, Response<GetNewsViews> response) {
 
-            try {
-                URL url = new URL(strUrl);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.connect();
+                if (response.isSuccessful()) {
+                    Toast.makeText(getActivity(), "Response Successfull", Toast.LENGTH_SHORT).show();
 
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                result = bufferedReader.readLine();
-                // Toast.makeText(getActivity(), "" + result, Toast.LENGTH_SHORT).show();
-                Log.e("value", result);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                    if (response.body() != null) {
+                        articleList = response.body().getArticles();
+
+                        ArticleAdapter adapter = new ArticleAdapter(getContext(), articleList);
+                        recyclerView.setAdapter(adapter);
+                    }
+                }
             }
-            return null;
-        }
 
-        @Override
-        protected void onPostExecute(String s) {
-            //  numberInfoTextView.setText(result);
-        }
+            @Override
+            public void onFailure(Call<GetNewsViews> call, Throwable t) {
+                Toast.makeText(getActivity(), "Failed to response", Toast.LENGTH_SHORT).show();
+                Log.e("news_response", t.getMessage());
+            }
+        });
+
     }
 }
