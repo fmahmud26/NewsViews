@@ -3,7 +3,9 @@ package com.example.firoz.newsviewsv2.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Article {
+import java.io.Serializable;
+
+public class Article implements Serializable {
     @SerializedName("author")
     @Expose
     private Object author;

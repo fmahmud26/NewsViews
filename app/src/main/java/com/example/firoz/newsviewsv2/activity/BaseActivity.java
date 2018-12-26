@@ -54,13 +54,13 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     // --- Code for exit from the app when user double clicked on the back button
-    public void exitWhenDoubleClick() {
+    public void exitWhenDoubleClick(String message) {
         endTime = startTime;
         startTime = System.currentTimeMillis();
         if (startTime - endTime < 500) {
             finish();
         } else {
-            showToast("Press back again to exit.");
+            showToast(message);
         }
     }
 

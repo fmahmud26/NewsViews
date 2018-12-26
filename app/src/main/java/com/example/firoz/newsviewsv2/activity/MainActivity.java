@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         MenuItem menuItem = menu.findItem(R.id.search_id);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        searchView.setInputType(InputType.TYPE_CLASS_NUMBER);
+        searchView.setInputType(InputType.TYPE_CLASS_DATETIME);
         searchView.setQueryHint("Search number");
 
         // --- Add listener on search view
@@ -126,6 +126,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void onBackPressed() {
-        exitWhenDoubleClick();
+        exitWhenDoubleClick("Press back again to exit.");
     }
 }

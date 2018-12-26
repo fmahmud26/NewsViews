@@ -1,5 +1,6 @@
 package com.example.firoz.newsviewsv2.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,15 +10,18 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.firoz.newsviewsv2.R;
+import com.example.firoz.newsviewsv2.activity.DetailsActivity;
 import com.example.firoz.newsviewsv2.activity.MainActivity;
 import com.example.firoz.newsviewsv2.adapter.ArticleAdapter;
 import com.example.firoz.newsviewsv2.api.ApiService;
 import com.example.firoz.newsviewsv2.api.ApiUtils;
+import com.example.firoz.newsviewsv2.listener.ItemClickListener;
 import com.example.firoz.newsviewsv2.model.Article;
 import com.example.firoz.newsviewsv2.model.GetNewsViews;
 
@@ -32,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Home extends Fragment {
+public class Home extends Fragment implements ItemClickListener {
 
 
     Unbinder unbinder;
@@ -106,7 +110,7 @@ public class Home extends Fragment {
                     if (response.body() != null) {
                         articleList = response.body().getArticles();
 
-                        ArticleAdapter adapter = new ArticleAdapter(getContext(), articleList);
+                        ArticleAdapter adapter = new ArticleAdapter(getContext(), articleList, Home.this);
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -122,6 +126,17 @@ public class Home extends Fragment {
 
             }
         });
+
+    }
+
+    @Override
+    public void itemClick(int position) {
+        // --- Go to details activity
+        getActivity().startActivity(new Intent(getContext(), DetailsActivity.class).putExtra("article", articleList.get(position)));
+    }
+
+    @Override
+    public void popUpMenuClick(MenuItem item, int position) {
 
     }
 }

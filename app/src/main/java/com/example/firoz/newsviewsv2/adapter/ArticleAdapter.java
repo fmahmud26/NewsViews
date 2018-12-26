@@ -2,6 +2,7 @@ package com.example.firoz.newsviewsv2.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.firoz.newsviewsv2.R;
+import com.example.firoz.newsviewsv2.listener.ItemClickListener;
 import com.example.firoz.newsviewsv2.model.Article;
 
 import java.util.List;
@@ -20,10 +22,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArtitleV
 
     private Context context;
     private List<Article> articleList;
+    private ItemClickListener itemClickListener;
 
-    public ArticleAdapter(Context context, List<Article> articleList) {
+    public ArticleAdapter(Context context, List<Article> articleList, Fragment fragment) {
         this.context = context;
         this.articleList = articleList;
+        itemClickListener = (ItemClickListener) fragment;
     }
 
     @NonNull
@@ -50,6 +54,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArtitleV
         return articleList.size();
     }
 
+
+    // ---- View Holder Class -----
     class ArtitleViewHolder extends RecyclerView.ViewHolder {
 
         ImageView newsImage;
@@ -61,6 +67,14 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArtitleV
             newsImage = itemView.findViewById(R.id.newsImage);
             newsTitle = itemView.findViewById(R.id.newsTitle);
             publishedTime = itemView.findViewById(R.id.publishedTime);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClickListener.itemClick(getAdapterPosition());
+                }
+            });
         }
     }
 }

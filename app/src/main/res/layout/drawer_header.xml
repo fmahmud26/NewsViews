@@ -2,22 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/header_background"
+    android:background="@drawable/header_image"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp">
 
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="110dp"
         android:layout_height="90dp"
         android:scaleType="fitXY"
-        android:src="@drawable/newspaper" />
+        android:src="@drawable/newspaper" />-->
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/header_text"
         android:textColor="@color/header_text_color"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold|italic" />
 </LinearLayout>

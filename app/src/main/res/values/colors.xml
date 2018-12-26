@@ -15,4 +15,5 @@
     <color name="black_color">#000000</color>
     <color name="date_time_text_color">#000000</color>
     <color name="header_text_color">#ffffff</color>
+    <color name="green_color">#1B5E20</color>
 </resources>
