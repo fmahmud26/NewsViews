@@ -7,8 +7,9 @@
     <string name="header_text">NewsViews</string>
     <string name="sample">Sample</string>
     <string name="newsviews">NewsViews</string>
-    <string name="text_third_page">This app provide you various news</string>
-    <string name="welcome">Welcome</string>
+    <string name="text_third_page">This app provide you various news in the world
+        from different top level online website.</string>
+    <string name="welcome">Welcome To NewsViews</string>
     <string name="about">Now you can read all top news in the world just in one click.</string>
     <string name="date_time">10-12-2018-T12:10:21</string>
     <string name="view_more">View More</string>

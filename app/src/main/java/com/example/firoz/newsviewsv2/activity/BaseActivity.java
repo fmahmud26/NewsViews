@@ -30,13 +30,18 @@ public class BaseActivity extends AppCompatActivity {
     public void showSnackBar(String message) {
         View view = findViewById(android.R.id.content);
         Snackbar snackbar = Snackbar.make(view, message, Snackbar.LENGTH_LONG);
-        snackbar.setActionTextColor(Color.BLACK);
+        snackbar.setActionTextColor(Color.MAGENTA);
 
         View view2 = snackbar.getView();
         TextView tv = view2.findViewById(android.support.design.R.id.snackbar_text);
         tv.setTextColor(Color.GREEN);
 
-        snackbar.setAction("OK", null);
+        snackbar.setAction("OK", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // --- Just close
+            }
+        });
 
         snackbar.show();
     }
