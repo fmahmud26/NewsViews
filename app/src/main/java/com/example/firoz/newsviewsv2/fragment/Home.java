@@ -7,9 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -49,6 +53,7 @@ public class Home extends Fragment implements ItemClickListener {
 
     private List<Article> articleList = new ArrayList<>();
     private ApiService apiService;
+    private boolean isGridView = true;
 
     @Nullable
     @Override
@@ -68,9 +73,18 @@ public class Home extends Fragment implements ItemClickListener {
         loadNews();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     private void initViews() {
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        getActivity().setTitle("NewsViews");
+        if (isGridView)
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        else
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     private void initListeners() {
@@ -82,6 +96,29 @@ public class Home extends Fragment implements ItemClickListener {
             }
 
         });
+    }
+
+    // Create option menu inside fragment
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.option_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    // Handle click event on menu option
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_gridview:
+                isGridView = true;
+                initViews();
+                return true;
+            case R.id.menu_linear:
+                isGridView = false;
+                initViews();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initApiList() {
