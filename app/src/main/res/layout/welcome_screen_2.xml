@@ -5,14 +5,12 @@
     android:background="@color/background_color"
     android:gravity="center">
 
-    <TextView
-        android:id="@+id/newsviews_textview"
+
+    <ImageView
+        android:id="@+id/splashImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/newsviews"
-        android:textAlignment="center"
-        android:textColor="#128b79"
-        android:textSize="30sp"
-        android:textStyle="bold|italic" />
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash_image" />
 
 </LinearLayout>

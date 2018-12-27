@@ -10,7 +10,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -45,8 +44,7 @@ public class Home extends Fragment implements ItemClickListener {
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
-    private String NEWS_API = "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=";
-    private String API_KEY = "77f25792a70749929ba013c7f297261c";
+
     private List<String> API_LIST = new ArrayList<>();
 
     private List<Article> articleList = new ArrayList<>();
@@ -124,7 +122,7 @@ public class Home extends Fragment implements ItemClickListener {
     }
 
     private void load(String url) {
-        apiService.getNewsDetails(url + API_KEY).enqueue(new Callback<GetNewsViews>() {
+        apiService.getNewsDetails(url + AppConstant.API_KEY).enqueue(new Callback<GetNewsViews>() {
             @Override
             public void onResponse(Call<GetNewsViews> call, Response<GetNewsViews> response) {
 
@@ -156,10 +154,5 @@ public class Home extends Fragment implements ItemClickListener {
     public void itemClick(int position) {
         // --- Go to details activity
         getActivity().startActivity(new Intent(getContext(), DetailsActivity.class).putExtra("article", articleList.get(position)));
-    }
-
-    @Override
-    public void popUpMenuClick(MenuItem item, int position) {
-
     }
 }

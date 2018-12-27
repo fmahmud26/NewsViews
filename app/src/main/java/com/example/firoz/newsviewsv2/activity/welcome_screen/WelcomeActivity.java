@@ -1,16 +1,12 @@
 package com.example.firoz.newsviewsv2.activity.welcome_screen;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.firoz.newsviewsv2.R;
 import com.example.firoz.newsviewsv2.activity.BaseActivity;
-import com.example.firoz.newsviewsv2.activity.MainActivity;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

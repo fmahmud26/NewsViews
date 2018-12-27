@@ -3,13 +3,9 @@ package com.example.firoz.newsviewsv2.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import com.example.firoz.newsviewsv2.R;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

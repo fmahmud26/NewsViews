@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.example.firoz.newsviewsv2.R;
 
@@ -19,9 +19,10 @@ import butterknife.Unbinder;
 
 public class SecondPage extends Fragment {
 
-    @BindView(R.id.newsviews_textview)
-    TextView newsviewsTextview;
+
     Unbinder unbinder;
+    @BindView(R.id.splashImageView)
+    ImageView splashImage;
 
     @Nullable
     @Override
@@ -40,7 +41,7 @@ public class SecondPage extends Fragment {
 
     private void initAnimation() {
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.welcome_animation);
-        newsviewsTextview.startAnimation(animation);
+        splashImage.startAnimation(animation);
     }
 
     @Override

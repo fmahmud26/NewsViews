@@ -5,32 +5,23 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.firoz.newsviewsv2.R;
 import com.example.firoz.newsviewsv2.activity.BaseActivity;
-import com.example.firoz.newsviewsv2.api.ApiClient;
-import com.example.firoz.newsviewsv2.api.ApiService;
-import com.example.firoz.newsviewsv2.api.ApiUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class NumberInfo extends Fragment {
 
