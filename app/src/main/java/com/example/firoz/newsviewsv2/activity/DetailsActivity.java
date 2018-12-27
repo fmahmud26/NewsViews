@@ -1,9 +1,7 @@
 package com.example.firoz.newsviewsv2.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +26,8 @@ public class DetailsActivity extends BaseActivity {
     ImageView newsPhoto;
     @BindView(R.id.detailsTextView)
     TextView detailsTextView;
+    @BindView(R.id.viewMore)
+    TextView viewMore;
 
     private Article article;
 
@@ -44,6 +44,7 @@ public class DetailsActivity extends BaseActivity {
     private void initViews() {
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
+        viewMore.setText(Html.fromHtml("<u>View More</u>"));
     }
 
     private void initObjects() {
@@ -52,8 +53,8 @@ public class DetailsActivity extends BaseActivity {
 
     private void setData() {
         titleTextView.setText(article.getTitle());
-        if (article.getAuthor()!=null)
-        authorTextView.setText(article.getAuthor().toString());
+        if (article.getAuthor() != null)
+            authorTextView.setText(article.getAuthor().toString());
         timeTextView.setText(article.getPublishedAt());
         detailsTextView.setText(article.getDescription());
 

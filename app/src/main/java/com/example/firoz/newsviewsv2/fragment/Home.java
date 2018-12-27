@@ -24,6 +24,7 @@ import com.example.firoz.newsviewsv2.api.ApiUtils;
 import com.example.firoz.newsviewsv2.listener.ItemClickListener;
 import com.example.firoz.newsviewsv2.model.Article;
 import com.example.firoz.newsviewsv2.model.GetNewsViews;
+import com.example.firoz.newsviewsv2.utility.AppConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +47,10 @@ public class Home extends Fragment implements ItemClickListener {
     SwipeRefreshLayout refreshLayout;
     private String NEWS_API = "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=";
     private String API_KEY = "77f25792a70749929ba013c7f297261c";
+    private List<String> API_LIST = new ArrayList<>();
 
     private List<Article> articleList = new ArrayList<>();
+    private ApiService apiService;
 
     @Nullable
     @Override
@@ -63,8 +66,10 @@ public class Home extends Fragment implements ItemClickListener {
 
         initViews();
         initListeners();
+        initApiList();
         loadNews();
     }
+
 
     private void initViews() {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -79,6 +84,19 @@ public class Home extends Fragment implements ItemClickListener {
             }
 
         });
+    }
+
+    private void initApiList() {
+        API_LIST.add(AppConstant.API_1);
+        API_LIST.add(AppConstant.API_2);
+        API_LIST.add(AppConstant.API_3);
+        API_LIST.add(AppConstant.API_4);
+        API_LIST.add(AppConstant.API_5);
+        API_LIST.add(AppConstant.API_6);
+        API_LIST.add(AppConstant.API_7);
+        API_LIST.add(AppConstant.API_8);
+        API_LIST.add(AppConstant.API_9);
+        API_LIST.add(AppConstant.API_10);
     }
 
     @Override
@@ -97,20 +115,26 @@ public class Home extends Fragment implements ItemClickListener {
             refreshLayout.setRefreshing(false);
             return;
         }
+        apiService = ApiUtils.getService();
 
-        ApiService apiService = ApiUtils.getService();
-        Call<GetNewsViews> newsViews = apiService.getNewsDetails(NEWS_API + API_KEY);
+        for (int i = 0; i < 10; i++) {
+            load(API_LIST.get(i));
+        }
 
-        newsViews.enqueue(new Callback<GetNewsViews>() {
+    }
+
+    private void load(String url) {
+        apiService.getNewsDetails(url + API_KEY).enqueue(new Callback<GetNewsViews>() {
             @Override
             public void onResponse(Call<GetNewsViews> call, Response<GetNewsViews> response) {
 
                 if (response.isSuccessful()) {
 
-                    if (response.body() != null) {
-                        articleList = response.body().getArticles();
-
+                    if (response.body().getArticles() != null) {
+                        // articleList = response.body().getArticles();
+                        articleList.addAll(response.body().getArticles());
                         ArticleAdapter adapter = new ArticleAdapter(getContext(), articleList, Home.this);
+                        adapter.notifyDataSetChanged();
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -126,7 +150,6 @@ public class Home extends Fragment implements ItemClickListener {
 
             }
         });
-
     }
 
     @Override

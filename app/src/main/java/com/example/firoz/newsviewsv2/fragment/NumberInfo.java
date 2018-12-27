@@ -57,6 +57,7 @@ public class NumberInfo extends Fragment {
         new GetNumberInfo().execute();
     }
 
+    /*
     private void loadNumberData() {
 
         ApiUtils.getService().getNumberInfo(API_URL + BaseActivity.number).enqueue(new Callback<String>() {
@@ -78,6 +79,7 @@ public class NumberInfo extends Fragment {
             }
         });
     }
+    */
 
     @Override
     public void onDestroyView() {
