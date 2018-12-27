@@ -52,6 +52,7 @@ public class DetailsActivity extends BaseActivity {
 
     private void setData() {
         titleTextView.setText(article.getTitle());
+        if (article.getAuthor()!=null)
         authorTextView.setText(article.getAuthor().toString());
         timeTextView.setText(article.getPublishedAt());
         detailsTextView.setText(article.getDescription());

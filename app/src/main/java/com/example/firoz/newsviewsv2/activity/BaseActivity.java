@@ -34,7 +34,7 @@ public class BaseActivity extends AppCompatActivity {
     public void showSnackBar(String message) {
         View view = findViewById(android.R.id.content);
         Snackbar snackbar = Snackbar.make(view, message, Snackbar.LENGTH_LONG);
-        snackbar.setActionTextColor(Color.WHITE);
+        snackbar.setActionTextColor(Color.BLACK);
 
         View view2 = snackbar.getView();
         TextView tv = view2.findViewById(android.support.design.R.id.snackbar_text);
@@ -69,6 +69,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     // --- Code for replace fragment
+    // --- This method add fragment on the home screen
     public void addFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_place, fragment).commit();
     }
@@ -94,16 +95,18 @@ public class BaseActivity extends AppCompatActivity {
         return false;
     }
 
-
+    // These for three page welcome screen
     public void addWelcomeScreen(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.welcome_screen_place, fragment).commit();
     }
 
+    // Go home activity
     public void goHomePage() {
         startActivity(new Intent(this, MainActivity.class));
     }
 
 
+    // --- Show alert dialog, if user open the news link into an external browser or not
     public void showAlert(final String url) {
         new AlertDialog.Builder(this).
                 setMessage("Do you open it external browser?").setCancelable(false)
@@ -127,6 +130,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
+    // --- When home button is called, this method gets called
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
