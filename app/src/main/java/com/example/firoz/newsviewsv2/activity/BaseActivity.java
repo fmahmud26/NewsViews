@@ -1,18 +1,22 @@
 package com.example.firoz.newsviewsv2.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,5 +101,38 @@ public class BaseActivity extends AppCompatActivity {
 
     public void goHomePage() {
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+
+    public void showAlert(final String url) {
+        new AlertDialog.Builder(this).
+                setMessage("Do you open it external browser?").setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // If yes, then open the link into external web browser
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // If No, then open into webview
+                        startActivity(new Intent(BaseActivity.this, MoreDetailsActivity.class).putExtra("url", url));
+                    }
+                })
+                .setNeutralButton("Cancel", null).show();
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

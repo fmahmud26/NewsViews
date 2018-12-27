@@ -16,7 +16,7 @@ import com.example.firoz.newsviewsv2.model.Article;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends BaseActivity {
 
     @BindView(R.id.titleTextView)
     TextView titleTextView;
@@ -62,15 +62,9 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void viewMore(View view) {
-        startActivity(new Intent(this, MoreDetailsActivity.class).putExtra("url", article.getUrl()));
+        // It show an alert dialog, if user open it into external browser or not
+        showAlert(article.getUrl());
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 }
