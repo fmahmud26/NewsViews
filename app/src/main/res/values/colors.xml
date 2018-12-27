@@ -6,7 +6,7 @@
 
     <!-- My Custom Color -->
     <color name="drawer_background">#ffffff</color>
-    <color name="drawer_icon_color">#1B5E20</color>
+    <color name="drawer_icon_color">#4A148C</color>
     <color name="drawer_text_color">#000000</color>
     <color name="background_color">#E1F5FE</color>
     <color name="header_background">#4A148C</color>

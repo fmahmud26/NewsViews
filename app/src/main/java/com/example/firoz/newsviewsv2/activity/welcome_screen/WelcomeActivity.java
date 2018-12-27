@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.firoz.newsviewsv2.R;
 import com.example.firoz.newsviewsv2.activity.BaseActivity;
 
@@ -38,12 +39,13 @@ public class WelcomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (isFirstTime()) {
+     /*   if (isFirstTime()) {
             goHomePage();
             finish();
         } else {
             initViews();
-        }
+        }*/
+        initViews();
     }
 
     private void initViews() {

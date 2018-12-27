@@ -1,5 +1,6 @@
 package com.example.firoz.newsviewsv2.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
@@ -14,7 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.FrameLayout;
+
 import com.example.firoz.newsviewsv2.R;
+import com.example.firoz.newsviewsv2.activity.welcome_screen.WelcomeActivity;
 import com.example.firoz.newsviewsv2.fragment.About;
 import com.example.firoz.newsviewsv2.fragment.Home;
 import com.example.firoz.newsviewsv2.fragment.NumberInfo;
@@ -35,6 +38,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (!getBoolean()) {
+            startActivity(new Intent(this, WelcomeActivity.class));
+            finish();
+        }
         super.onCreate(savedInstanceState);
 
         initViews();

@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/newsImage"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/newspaper" />
 
@@ -36,7 +36,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/sample"
                 android:textColor="@color/black_color"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:maxLines="1"
                 android:text="@string/date_time"
                 android:textColor="@color/date_time_text_color"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
         </RelativeLayout>
 
