@@ -13,12 +13,14 @@ import android.widget.TextView;
 
 import com.example.firoz.newsviewsv2.R;
 import com.example.firoz.newsviewsv2.activity.BaseActivity;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -44,33 +46,8 @@ public class NumberInfo extends Fragment {
 
         numberInfoTextView.setText(BaseActivity.number);
 
-        //  loadNumberData();
         new GetNumberInfo().execute();
     }
-
-    /*
-    private void loadNumberData() {
-
-        ApiUtils.getService().getNumberInfo(API_URL + BaseActivity.number).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-
-                if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Okay", Toast.LENGTH_SHORT).show();
-
-                }
-                Toast.makeText(getContext(), "" + response.toString(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-                Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
-                Log.e("number_fetch_error", t.getMessage());
-            }
-        });
-    }
-    */
 
     @Override
     public void onDestroyView() {

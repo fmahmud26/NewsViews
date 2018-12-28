@@ -1,7 +1,5 @@
-package com.example.firoz.newsviewsv2.utility;
+package com.example.firoz.newsviewsv2.app;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class AppConstant {
     public static String API_1 = "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=";
@@ -16,4 +14,8 @@ public class AppConstant {
     public static String API_10 = "https://newsapi.org/v2/top-headlines?sources=the-guardian-uk&apiKey=";
 
     public static String API_KEY = "77f25792a70749929ba013c7f297261c";
+
+    public static String KEY_PREF = "pref";
+    public static String KEY_IS_FIRST = "is_first_time";
+    public static String KEY_IS_LINEAR = "is_grid_view";
 }

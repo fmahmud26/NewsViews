@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">NewsViews</string>
 
+    <!-- For navigation drawer -->
     <string name="close">Close</string>
     <string name="open">Open</string>
 
+    <!-- Other String resources -->
     <string name="header_text">NewsViews</string>
     <string name="sample">Sample</string>
     <string name="newsviews">NewsViews</string>

@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -18,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firoz.newsviewsv2.R;
+import com.example.firoz.newsviewsv2.app.AppConstant;
+import com.example.firoz.newsviewsv2.preference.MyPreference;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -82,18 +83,12 @@ public class BaseActivity extends AppCompatActivity {
 
     // --- Code for store a boolean value into shared preference
     public void saveBoolean(Boolean value) {
-        SharedPreferences preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(KEY_BOOLEAN, value).commit();
+        MyPreference.saveBoolean(this, AppConstant.KEY_IS_FIRST, value);
     }
 
     // --- Code for retrieve a boolean value into shared preference
     public boolean getBoolean() {
-        SharedPreferences preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
-        if (preferences.contains(KEY_BOOLEAN)) {
-            return preferences.getBoolean(KEY_BOOLEAN, false);
-        }
-        return false;
+        return MyPreference.getBoolean(this, AppConstant.KEY_IS_FIRST);
     }
 
     // These for three page welcome screen

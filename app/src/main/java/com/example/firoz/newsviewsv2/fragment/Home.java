@@ -27,7 +27,8 @@ import com.example.firoz.newsviewsv2.api.ApiUtils;
 import com.example.firoz.newsviewsv2.listener.ItemClickListener;
 import com.example.firoz.newsviewsv2.model.Article;
 import com.example.firoz.newsviewsv2.model.GetNewsViews;
-import com.example.firoz.newsviewsv2.utility.AppConstant;
+import com.example.firoz.newsviewsv2.app.AppConstant;
+import com.example.firoz.newsviewsv2.preference.MyPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,6 @@ public class Home extends Fragment implements ItemClickListener {
 
     private List<Article> articleList = new ArrayList<>();
     private ApiService apiService;
-    private boolean isGridView = true;
 
     @Nullable
     @Override
@@ -81,10 +81,11 @@ public class Home extends Fragment implements ItemClickListener {
 
     private void initViews() {
         getActivity().setTitle("NewsViews");
-        if (isGridView)
-            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        else
+        if (MyPreference.getBoolean(getContext(), AppConstant.KEY_IS_LINEAR))
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        else
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
     }
 
     private void initListeners() {
@@ -110,11 +111,11 @@ public class Home extends Fragment implements ItemClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_gridview:
-                isGridView = true;
+                MyPreference.saveBoolean(getContext(), AppConstant.KEY_IS_LINEAR, false);
                 initViews();
                 return true;
             case R.id.menu_linear:
-                isGridView = false;
+                MyPreference.saveBoolean(getContext(), AppConstant.KEY_IS_LINEAR, true);
                 initViews();
                 return true;
         }
