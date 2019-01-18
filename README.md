@@ -1,5 +1,4 @@
-# NewsViewsV2
-Assignment Project.
+# NewsViews
 
 <h3>Some Image for this project</h3>
 
